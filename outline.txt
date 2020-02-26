@@ -1,0 +1,21 @@
+initial premise: for the game to generate a frame, we need inputs from both players
+
+    [demo showing how each state is a function of the previous state and the new inputs]
+
+problem 1:  the remote player's inputs take time to arrive
+
+solution 1: wait for the remote input before creating a frame (naive solution)
+
+    [demo showing how this works, but fails (increases frame times) as latency increases]
+
+problem 2:  every frame is now delayed by the amount of time it takes for the remote input to arrive
+
+solution 2: delay local inputs (build a buffer)
+
+    [demo showing how a buffer allows for smooth gameplay at high latency, but also how this results in unstable input latency]
+
+problem 3:  sucks for learning precise input timings (delay is based on inconsistent latency)
+
+solution 3: "rollback" netcode
+
+    [rollback demo, potentially in multiple parts to decrease complexity dump]
